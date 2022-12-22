@@ -22,16 +22,6 @@
   font-weight: 500 700;
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
-  margin-bottom: 1em;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
 :root{
   --cream-clr: hsl(30, 38%, 92%);
   --dark-cyan: hsl(158, 36%, 37%);
@@ -62,12 +52,11 @@ body{
 }
 
 .card-img{
-  background-image: url('images/image-product-mobile.jpg');
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
-  background-size: cover;
   width: 100%;
-  aspect-ratio: 1/0.7;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card{
@@ -85,7 +74,7 @@ body{
 }
 
 .product-category{  
-  font-size: 12px;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.4em;
   color: var(--dark-grayish-blue);
@@ -93,10 +82,13 @@ body{
 
 h1{  
   line-height: 1;
+  font-size: 2rem;
+  font-size: clamp(1.9rem, 1.84rem + 0.26vw, 2rem);
 }
 
 .desc{
-  font-size: 14px;
+  font-size: 0.875rem;
+  font-size: clamp(0.75rem, calc(1vw + 0.5rem), 0.875rem);
   color: var(--dark-grayish-blue);
   line-height: 1.75;
 }
@@ -108,12 +100,20 @@ h1{
 
 .current-price{
   color: var(--dark-cyan);
-  font-size: 2rem;
+  font-size: clamp(1.4rem, calc(1vw + 0.8rem), 2rem);
 }
 
 .previous-price{
   color: var(--dark-grayish-blue);
-  font-size: 12px;
+  font-size: 0.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* for screen readers only */
+.sr-only {
+  position: absolute;
+  right: -1000px;
 }
 
 button{
@@ -133,12 +133,20 @@ button:hover{
 }
 
 @media all and (min-width:375px){
-  body{
+  /* previous version 
+  main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+  } */
+
+  /* improved version: for centering*/
+  main{
+    height: 100vh;
+    display: grid;
+    place-content: center;
   }
 
   .container{
@@ -149,13 +157,16 @@ button:hover{
     flex-direction: row;
   }
 
-  .card-container > div{
+  .card-container > *{
     flex: 50%;
   }
 
   .card-img{
-    background-image: url('images/image-product-desktop.jpg');
     border-top-right-radius: 0;
     border-bottom-left-radius: 0.5em;
+  }
+
+  .card{
+    justify-content: center;
   }
 }
