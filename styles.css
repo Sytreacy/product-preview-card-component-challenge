@@ -60,8 +60,8 @@ body{
 }
 
 .card{
-  padding: 1.5em;
-  gap: 1em;
+  padding: 1.75em;
+  gap: 1.75em;
   flex-direction: column;
 }
 
